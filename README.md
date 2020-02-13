@@ -19,6 +19,10 @@ Noah's aRk, a blockchain built on the [Substrate](https://substrate.dev) framewo
 
 aRk tokens will be issued 1:1 with rhoc tokens from ethereum block height 9371743, the same block the coop announced. Motions may be made to cancel any existing tokens, mint new tokens, run taint analyses, and more. The critical difference is that these motions will pass or fail based on token-backed voting. The exact mechanism comes from Substrate's [Democracy pallet](https://substrate.dev/rustdocs/master/pallet_democracy/index.html).
 
+## Disclaimer
+
+This project is in no way supported or endorsed by Parity Technologies.
+
 ## Short Term Technical Plan
 
 The code in this repository is currently just a clone of the [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template). It will be developed into a working chain that meets the needs of the Rchain community February 14-16 at ETH Denver. Development will be led by [Joshy Orndorff](https://github.com/joshorndorff/) and anyone who wishes to contribute. A testnet will be launched shortly thereafter, and the testnet will become mainnet if it is able to represent the will of the community.
