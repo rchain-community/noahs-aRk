@@ -13,15 +13,15 @@ Since at least Summer 2018 and probably earlier, we, the Rchain community, a gro
 
 Being part of the blockchain community, the Rchain community has known all along that we have the power to fork off, but due partly to Stockholm Syndrome, partly to apathy, and largely to inability to coordinate our efforts, have allowed Lgreg to hold the reigns.
 
-Recently, despite a very clear plan to issue rev 1:1 to rhoc, Lgreg has tried to ut out stakeholders with whom he has personal vendettas. The community has struggled to agree on the issuance of the rev token and is, more than ever, in need of a mechanism of social coordination. For years Lgreg has promised that Rchain will provide this means, but it never launches and the status quo remains.
+Recently, despite a very clear plan to issue rev 1:1 to rhoc, Lgreg has tried to cut out stakeholders with whom he has personal vendettas. The community has struggled to agree on the issuance of the rev token and is, more than ever, in need of a mechanism of social coordination. For years Lgreg has promised that Rchain will provide this means, but it never launches and the status quo remains.
 
-Noah's aRk a blockchain built on the [Substrate](https://substrate.dev) framework, will provide token based voting to settle the rev issuance, and any other disputes arising in the community.
+Noah's aRk, a blockchain built on the [Substrate](https://substrate.dev) framework, will provide token based voting to settle the rev issuance, and any other disputes arising in the community.
 
-aRk tokens will be issues 1:1 with rhoc tokens from ethereum block height 9371743, the same block the coop announced. Motions may be made to cancel any existing tokens, mint new tokens, run taint analyses, and more. The critical difference is that these motions will pass or fail based on token-backed voting. The exact mechanism comes from Substrate's [Democracy pallet](https://substrate.dev/rustdocs/master/pallet_democracy/index.html).
+aRk tokens will be issued 1:1 with rhoc tokens from ethereum block height 9371743, the same block the coop announced. Motions may be made to cancel any existing tokens, mint new tokens, run taint analyses, and more. The critical difference is that these motions will pass or fail based on token-backed voting. The exact mechanism comes from Substrate's [Democracy pallet](https://substrate.dev/rustdocs/master/pallet_democracy/index.html).
 
 ## Short Term Technical Plan
 
-The code in this repository is currently just a clone of the [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template). It will be developed into working chain that meets the needs of the Rchain community February 14-16 at ETH Denver. Development will be led by [Joshy Orndorff](https://github.com/joshorndorff/) and anyone who wishes to contribute. A testnet will be launched shortly thereafter, and the testnet will become mainnet assuming it is able to represent the will of the community.
+The code in this repository is currently just a clone of the [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template). It will be developed into a working chain that meets the needs of the Rchain community February 14-16 at ETH Denver. Development will be led by [Joshy Orndorff](https://github.com/joshorndorff/) and anyone who wishes to contribute. A testnet will be launched shortly thereafter, and the testnet will become mainnet if it is able to represent the will of the community.
 
 ### The Airdrop
 
