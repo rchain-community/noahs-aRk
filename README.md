@@ -5,7 +5,7 @@
 * 🗳️ An experiment in on-chain governance
 * 🔗 Rchain main-net
 * 💩 A shitcoin of our own
-* 👊 A slap in Lgreg Meredith's face
+* 👊 A censure of Lgreg Meredith
 
 ## Motivation
 
