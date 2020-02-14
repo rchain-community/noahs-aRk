@@ -2,7 +2,7 @@ use sp_core::{Pair, Public, sr25519};
 use runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
 	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY, Signature,
-	SessionConfig, opaque::SessionKeys, ValidatorSetConfig
+	SessionConfig, opaque::SessionKeys, ValidatorSetConfig, DemocracyConfig,
 };
 use sp_consensus_aura::sr25519::{AuthorityId as AuraId};
 use grandpa_primitives::{AuthorityId as GrandpaId};
@@ -164,6 +164,7 @@ fn testnet_genesis(initial_authorities: Vec<(AccountId, GrandpaId, AuraId)>,
 		grandpa: Some(GrandpaConfig {
 			authorities: vec![],
 		}),
+		democracy: Some(DemocracyConfig::default()),
 	}
 }
 

@@ -2424,6 +2424,7 @@ dependencies = [
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "pallet-aura 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "pallet-balances 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "pallet-democracy 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "pallet-grandpa 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "pallet-indices 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "pallet-randomness-collective-flip 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
@@ -2586,6 +2587,20 @@ dependencies = [
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+]
+
+[[package]]
+name = "pallet-democracy"
+version = "2.0.0"
+source = "git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873#85b65a38330e732689c5d8d5cfe75ba53b9dc873"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sp-io 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
  "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
 ]
@@ -6129,6 +6144,7 @@ dependencies = [
 "checksum owning_ref 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "49a4b8ea2179e6a2e27411d3bca09ca6dd630821cf6894c6c7c8467a8ee7ef13"
 "checksum pallet-aura 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"
 "checksum pallet-balances 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"
+"checksum pallet-democracy 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"
 "checksum pallet-finality-tracker 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"
 "checksum pallet-grandpa 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"
 "checksum pallet-indices 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)" = "<none>"

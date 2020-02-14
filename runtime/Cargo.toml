@@ -168,6 +168,12 @@ rev = '85b65a38330e732689c5d8d5cfe75ba53b9dc873'
 default-features = false
 path = '../pallets/validator-set'
 
+[dependencies.democracy]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+package = 'pallet-democracy'
+rev = '85b65a38330e732689c5d8d5cfe75ba53b9dc873'
+
 [features]
 default = ['std']
 std = [
@@ -198,6 +204,7 @@ std = [
     'timestamp/std',
     'transaction-payment/std',
     'validator-set/std',
+    'democracy/std',
 ]
 
 [package]

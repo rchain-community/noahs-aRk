@@ -15,7 +15,7 @@ use sp_runtime::{
 	impl_opaque_keys, MultiSignature,
 };
 use sp_runtime::traits::{
-	NumberFor, BlakeTwo256, Block as BlockT, StaticLookup, Verify, ConvertInto, IdentifyAccount, OpaqueKeys,
+	BlakeTwo256, Block as BlockT, StaticLookup, Verify, ConvertInto, IdentifyAccount, OpaqueKeys,
 };
 use sp_api::impl_runtime_apis;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
@@ -24,6 +24,8 @@ use grandpa::fg_primitives;
 use sp_version::RuntimeVersion;
 #[cfg(feature = "std")]
 use sp_version::NativeVersion;
+
+use system::EnsureNever;
 
 // A few exports that help ease life for downstream crates.
 #[cfg(any(feature = "std", test))]
@@ -249,6 +251,37 @@ impl validator_set::Trait for Runtime {
 	type Event = Event;
 }
 
+parameter_types! {
+	pub const LaunchPeriod: BlockNumber = 10;
+	pub const VotingPeriod: BlockNumber = 10;
+	pub const EmergencyVotingPeriod: BlockNumber = 10;
+	pub const MinimumDeposit: Balance = 1000;
+	pub const EnactmentPeriod: BlockNumber = 10;
+	pub const CooloffPeriod: BlockNumber = 100;
+	pub const PreimageByteDeposit: Balance = 1;
+}
+
+impl democracy::Trait for Runtime {
+	type Proposal = Call;
+	type Event = Event;
+	type Currency = Balances;
+	type EnactmentPeriod = EnactmentPeriod;
+	type LaunchPeriod = LaunchPeriod;
+	type VotingPeriod = VotingPeriod;
+	type EmergencyVotingPeriod = EmergencyVotingPeriod;
+	type MinimumDeposit = MinimumDeposit;
+	type CooloffPeriod = CooloffPeriod;
+	type PreimageByteDeposit = PreimageByteDeposit;
+	// No council or other special hooks into democracy
+	type ExternalOrigin = EnsureNever<AccountId>;
+	type ExternalMajorityOrigin = EnsureNever<AccountId>;
+	type ExternalDefaultOrigin = EnsureNever<AccountId>;
+	type CancellationOrigin = EnsureNever<AccountId>;
+	type VetoOrigin = EnsureNever<AccountId>;
+	type FastTrackOrigin = EnsureNever<AccountId>;
+	type Slash = ();
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
@@ -266,6 +299,7 @@ construct_runtime!(
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 		Session: session::{Module, Call, Storage, Event, Config<T>},
 		ValidatorSet: validator_set::{Module, Call, Storage, Event<T>, Config<T>},
+		Democracy: democracy::{Module, Call, Storage, Config, Event<T>},
 	}
 );
 
