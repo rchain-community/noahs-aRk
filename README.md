@@ -29,7 +29,7 @@ The code in this repository is currently just a clone of the [Substrate Node Tem
 
 ### The Airdrop
 
-The aRk token will be managed by Substrate's [Balances Pallet](https://substrate.dev/rustdocs/master/pallet_balances/index.html). Ark must be claimed by a process similar to claiming dots on Polkadot or ksm on Kusama. The code that handles these claims is at https://github.com/paritytech/polkadot/blob/master/runtime/common/src/claims.rs but can be simplified to remove the vesting, and updated to use a more recent Substrate API.
+The aRk token will be managed by Substrate's [Balances Pallet](https://substrate.dev/rustdocs/master/pallet_balances/index.html). aRk must be claimed by a process similar to claiming dots on Polkadot or ksm on Kusama. The code that handles these claims is at https://github.com/paritytech/polkadot/blob/master/runtime/common/src/claims.rs but can be simplified to remove the vesting, and updated to use a more recent Substrate API.
 
 ### Consensus
 
