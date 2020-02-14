@@ -12,10 +12,10 @@ use sp_std::prelude::*;
 use sp_core::OpaqueMetadata;
 use sp_runtime::{
 	ApplyExtrinsicResult, transaction_validity::TransactionValidity, generic, create_runtime_str,
-	impl_opaque_keys, MultiSignature
+	impl_opaque_keys, MultiSignature,
 };
 use sp_runtime::traits::{
-	NumberFor, BlakeTwo256, Block as BlockT, StaticLookup, Verify, ConvertInto, IdentifyAccount
+	NumberFor, BlakeTwo256, Block as BlockT, StaticLookup, Verify, ConvertInto, IdentifyAccount, OpaqueKeys,
 };
 use sp_api::impl_runtime_apis;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
@@ -203,6 +203,7 @@ impl balances::Trait for Runtime {
 	type Balance = Balance;
 	/// What to do if an account's free balance gets zeroed.
 	type OnFreeBalanceZero = ();
+	type OnReapAccount = System;
 	/// What to do if a new account is created.
 	type OnNewAccount = Indices;
 	/// The ubiquitous event type.
@@ -233,6 +234,21 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
+impl session::Trait for Runtime {
+	type SessionHandler = <opaque::SessionKeys as OpaqueKeys>::KeyTypeIdProviders;
+	type ShouldEndSession = ValidatorSet;
+	type SessionManager = ValidatorSet;
+	type Event = Event;
+	type Keys = opaque::SessionKeys;
+	type ValidatorId = <Self as system::Trait>::AccountId;
+	type ValidatorIdOf = validator_set::ValidatorOf<Self>;
+	type DisabledValidatorsThreshold = ();
+}
+
+impl validator_set::Trait for Runtime {
+	type Event = Event;
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
@@ -248,6 +264,8 @@ construct_runtime!(
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
+		Session: session::{Module, Call, Storage, Event, Config<T>},
+		ValidatorSet: validator_set::{Module, Call, Storage, Event<T>, Config<T>},
 	}
 );
 
@@ -330,8 +348,8 @@ impl_runtime_apis! {
 	}
 
 	impl sp_offchain::OffchainWorkerApi<Block> for Runtime {
-		fn offchain_worker(number: NumberFor<Block>) {
-			Executive::offchain_worker(number)
+		fn offchain_worker(header: &<Block as BlockT>::Header) {
+			Executive::offchain_worker(header)
 		}
 	}
 
@@ -348,6 +366,12 @@ impl_runtime_apis! {
 	impl sp_session::SessionKeys<Block> for Runtime {
 		fn generate_session_keys(seed: Option<Vec<u8>>) -> Vec<u8> {
 			opaque::SessionKeys::generate(seed)
+		}
+
+		fn decode_session_keys(
+			encoded: Vec<u8>,
+		) -> Option<Vec<(Vec<u8>, sp_core::crypto::KeyTypeId)>> {
+			opaque::SessionKeys::decode_into_raw_public_keys(&encoded)
 		}
 	}
 
