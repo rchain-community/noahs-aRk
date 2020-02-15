@@ -123,7 +123,8 @@ rev = '85b65a38330e732689c5d8d5cfe75ba53b9dc873'
 [workspace]
 members = [
 	'runtime',
-	'pallets/validator-set'
+	'pallets/validator-set',
+	'pallets/air-drop',
 ]
 
 [[bin]]

@@ -97,6 +97,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "air-drop"
+version = "0.1.0"
+dependencies = [
+ "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rustc-hex 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sp-core 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "sp-io 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+ "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=85b65a38330e732689c5d8d5cfe75ba53b9dc873)",
+]
+
+[[package]]
 name = "ansi_term"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
