@@ -28,7 +28,7 @@ use serde::{self, Serialize, Deserialize, Serializer, Deserializer};
 use sp_runtime::traits::{Zero, CheckedSub};
 use sp_runtime::{
 	RuntimeDebug, transaction_validity::{
-		TransactionLongevity, TransactionValidity, ValidTransaction, InvalidTransaction, TransactionValidityError,
+		TransactionLongevity, TransactionValidity, ValidTransaction, InvalidTransaction,
 	},
 };
 use system;
@@ -252,6 +252,8 @@ impl<T: Trait> Module<T> {
 impl<T: Trait> sp_runtime::traits::ValidateUnsigned for Module<T> {
 	type Call = Call<T>;
 
+	// TODO remove hard-coded integers by implementing conversion from
+	// modules error types to u8?
 	fn validate_unsigned(call: &Self::Call) -> TransactionValidity {
 		const PRIORITY: u64 = 100;
 
@@ -262,19 +264,13 @@ impl<T: Trait> sp_runtime::traits::ValidateUnsigned for Module<T> {
 				let signer = if let Some(s) = maybe_signer {
 					s
 				} else {
-					return Err(
-						TransactionValidityError::Invalid(
-							Error::<T>::InvalidEthereumSignature.into()
-						)
-					);
+					// 0 means invalid signature
+					return InvalidTransaction::Custom(0).into();
 				};
 
-				if !<Claims<T>>::exists(&signer) {
-					return Err(
-						TransactionValidityError::Invalid(
-							Error::<T>::SignerHasNoClaim.into()
-						)
-					);
+				if !<Claims<T>>::contains_key(&signer) {
+					// 1 means no claim
+					return Err(InvalidTransaction::Custom(1).into());
 				}
 
 				Ok(ValidTransaction {
