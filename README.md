@@ -5,15 +5,15 @@
 * 🗳️ An experiment in on-chain governance
 * 🔗 Rchain main-net
 * 💩 A shitcoin of our own
-* 👊 A censure of Lgreg Meredith
+* 👊 A censure of Greg Meredith's leadership
 
 ## Motivation
 
-Since at least Summer 2018 and probably earlier, we, the Rchain community, a group of people united by our belief in the importance of concurrency in the blockchain and our holdings in the rhoc token, have suffered the poor decision making and dishonesty of Lgreg Meredith, president of the Rchain cooperative, a legal entity in the legacy legal system of the State of Washington.
+Since at least Summer 2018 and probably earlier, we, the Rchain community, a group of people united by our belief in the importance of concurrency in the blockchain and our holdings in the rhoc token, have suffered the poor decision making and dishonesty of Greg Meredith, president of the Rchain cooperative, a legal entity in the legacy legal system of the State of Washington.
 
-Being part of the blockchain community, the Rchain community has known all along that we have the power to fork off, but due partly to Stockholm Syndrome, partly to apathy, and largely to inability to coordinate our efforts, have allowed Lgreg to hold the reigns.
+Being part of the blockchain community, the Rchain community has known all along that we have the power to fork off, but due partly to Stockholm Syndrome, partly to apathy, and largely to inability to coordinate our efforts, have allowed Greg to hold the reigns.
 
-Recently, despite a very clear plan to issue rev 1:1 to rhoc, Lgreg has tried to cut out various stakeholders he regards as "scammers" while providing insufficient details about the scams perpetrated. The community has struggled to agree on the issuance of the rev token and is, more than ever, in need of a mechanism of social coordination. For years Lgreg has promised that Rchain will provide this means, but it never launches and the status quo remains.
+Recently, despite a very clear plan to issue rev 1:1 to rhoc, Greg has tried to cut out various stakeholders he regards as "scammers" while providing insufficient details about the scams perpetrated. The community has struggled to agree on the issuance of the rev token and is, more than ever, in need of a mechanism of social coordination. For years Greg has promised that Rchain will provide this means, but it never launches and the status quo remains.
 
 Noah's aRk, a blockchain built on the [Substrate](https://substrate.dev) framework, will provide token based voting to settle the rev issuance, and any other disputes arising in the community.
 
@@ -62,7 +62,7 @@ Substrate provides a robust API for writing runtime logic. The RhoVM could be wr
 
 ### Limitless
 
-Anything the community can code in Rust, and gain social support for, can be installed on the chain. Let's experiement and see who we really R.
+Anything the community can code in Rust, and gain social support for, can be installed on the chain. Let's experiment and see who we can build together.
 
 
 
