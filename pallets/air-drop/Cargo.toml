@@ -8,25 +8,30 @@ edition = "2018"
 default = ['std']
 std = [
     'codec/std',
+    'frame-support/std',
+    'rustc-hex/std',
+    'serde',
     'sp-std/std',
     'sp-runtime/std',
-    'frame-support/std',
     'sp-core/std',
     'sp-io/std',
     'system/std',
-    'serde',
-    'rustc-hex/std',
 ]
-
-[dependencies.rustc-hex]
-version = "2.0.1"
-default-features = false
 
 [dependencies.codec]
 default-features = false
 features = ['derive']
 package = 'parity-scale-codec'
 version = '1.0.0'
+
+[dependencies.frame-support]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'
+
+[dependencies.rustc-hex]
+version = "2.0.1"
+default-features = false
 
 [dependencies.sp-std]
 default-features = false
@@ -49,11 +54,6 @@ optional = true
 version = '1.0.101'
 
 [dependencies.sp-core]
-default-features = false
-git = 'https://github.com/paritytech/substrate.git'
-rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'
-
-[dependencies.frame-support]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'

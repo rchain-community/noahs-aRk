@@ -2438,6 +2438,7 @@ dependencies = [
 name = "noahs-ark-runtime"
 version = "0.1.0"
 dependencies = [
+ "air-drop 0.1.0",
  "frame-executive 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
@@ -2451,6 +2452,7 @@ dependencies = [
  "pallet-sudo 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "pallet-timestamp 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "pallet-transaction-payment 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "pallet-vesting 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "safe-mix 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2772,6 +2774,7 @@ dependencies = [
  "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-io 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",

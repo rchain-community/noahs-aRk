@@ -16,6 +16,8 @@
 
 //! Pallet to process airdrop claims from Ethereum addresses.
 
+#![cfg_attr(not(feature = "std"), no_std)]
+
 use sp_std::prelude::*;
 use sp_io::{hashing::keccak_256, crypto::secp256k1_ecdsa_recover};
 use frame_support::{decl_event, decl_storage, decl_module, decl_error, ensure};
