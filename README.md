@@ -23,25 +23,34 @@ aRk tokens will be issued 1:1 with rhoc tokens from ethereum block height 937174
 
 This project is in no way supported or endorsed by Parity Technologies.
 
-## Short Term Technical Plan
+## Current Technical Overview
 
-The code in this repository is currently just a clone of the [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template). It will be developed into a working chain that meets the needs of the Rchain community February 14-16 at ETH Denver. Development will be led by [Joshy Orndorff](https://github.com/joshorndorff/) and anyone who wishes to contribute. A testnet will be launched shortly thereafter, and the testnet will become mainnet if it is able to represent the will of the community.
+The code in this repository is based on the [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template). It was developed into a working chain that hopefully meets the needs of the Rchain community February 14-16 at ETH Denver. A testnet will be launched shortly, and the testnet will become mainnet if it is able to represent the will of the community. Relevant aspects of the chain's mechanisms are outlined below.
 
 ### The Airdrop
 
-The aRk token will be managed by Substrate's [Balances Pallet](https://substrate.dev/rustdocs/master/pallet_balances/index.html). aRk must be claimed by a process similar to claiming dots on Polkadot or ksm on Kusama. The code that handles these claims is at https://github.com/paritytech/polkadot/blob/master/runtime/common/src/claims.rs but can be simplified to remove the vesting, and updated to use a more recent Substrate API.
+The aRk token is managed by Substrate's Balances Pallet. aRk must be claimed by a process similar to claiming DOTs on Polkadot or KSM on Kusama. The code that handles these claims is in `pallets/air-drop/src/lib.rs` and is nearly identical to https://github.com/paritytech/polkadot/blob/master/runtime/common/src/claims.rs.
 
 ### Consensus
 
 Block authoring will be handled by the Babe algorithm with a set of trusted authorities. Authorities will have no external incentive to author blocks, rather they will author because they believe in the project. Authorities may be added to the set by the same governance means as described above. Initially there will be three authorities all run by Joshy, unless other trustworthy and interested parties step forward. The code to manage the validator set is at https://github.com/gautamdhameja/substrate-validator-set and can be easily installed here.
 
+
+The code to manage the validator set is in `pallets/validator-set/src/lib.rs` and is nearly identical to https://github.com/gautamdhameja/substrate-validator-set.
+
 ### Governance
 
-As described above, the democracy pallet will be used for gevernance. Initially there will also be a sudo key controlled by Joshy to affect upgrades on short notice as necessary. This sudo key can be revoked by the token holders at any time according to the democracy. The holder of the sudo key can also chose to revoke it at any time.
+As described above, the democracy pallet will be used for governance. Proposals are submitted by locking tokens behind them. Proposals may be seconded by locking more tokens. After a regular interval, the highest staked proposal becomes a referendum and the staking tokens are returned in full. Voting happens by staking tokens behind Aye or Nay vote. Voting power is proportional to the amount of tokens staked and exponential in time staked. After a vote is resolved, the losing side will get their tokens unlocked immediately, giving them a chance to divest in the system. The winning side will get their tokens back when the specified locking period expires. This is the same democratic system used in Polkadot and Kusama. Learn more about voting at:
+
+* [Polkadot Documentation](https://wiki.polkadot.network/docs/en/learn-governance)
+* [Democracy Reference Docs](https://substrate.dev/rustdocs/master/pallet_democracy/index.html)
+* [Democracy Source Code](https://github.com/paritytech/substrate/tree/master/frame/democracy/src)
+
+Currently there is also be a [sudo](https://substrate.dev/rustdocs/master/pallet_sudo/index.html) key controlled by Joshy to affect upgrades on short notice as necessary. This sudo key can be removed before mainnet launch, depending on community sentiment. The sudo key can also be removed after launch either by the token holders according to the democracy, or by the holder of the sudo key at his or her own will.
 
 ## Long Term Technical Possibilities
 
-Initially this project strives only to help the community navigate the turbulence that it has experienced over the past few years. It is entirely possible that it will serve that purpose in a few weeks or months and then die. It is also possible that the community will come to value this chain and the simplicity of developing in Rust on Subststrate to the point that it evolves into #TheRealRchain mainnet.
+Initially this project strives only to help the community navigate the turbulence that it has experienced over the past few years. It is entirely possible that it will serve that purpose in a few weeks or months and then die. It is also possible that the community will come to value this chain and the simplicity of developing in Rust on Subststrate to the point that it evolves into #TheRealRchain mainnet. (Of course it's also possible that it will not gain momentum at all, but I hope this isn't the case.) The following sections explore some possibilities for the future of Noah's aRk.
 
 ### Consensus
 
@@ -53,7 +62,7 @@ Substrate provides a robust API for writing runtime logic. The RhoVM could be wr
 
 ### Limitless
 
-Anything the community can code in rust, and gain social support for, can be installed on the chain. Let's experiement and see who we really R.
+Anything the community can code in Rust, and gain social support for, can be installed on the chain. Let's experiement and see who we really R.
 
 
 
@@ -61,7 +70,7 @@ Anything the community can code in rust, and gain social support for, can be ins
 
 
 
-## Build
+## Building the Node
 
 Install Rust:
 
@@ -81,20 +90,25 @@ Build Wasm and native code:
 cargo build --release
 ```
 
-## Run
+## Running the Node
+
+Quickstart instructions are here. More detail about running Substrate nodes is available in the Substrate documentation:
+
+* [Creating you first Substrate chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain/)
+* [Start a private network with Substrate](https://substrate.dev/docs/en/tutorials/start-a-private-network/)
 
 ### Single Node Development Chain
 
 Purge any existing developer chain state:
 
 ```bash
-./target/release/node-template purge-chain --dev
+./target/release/noahs-ark purge-chain --dev
 ```
 
 Start a development chain with:
 
 ```bash
-./target/release/node-template --dev
+./target/release/noahs-ark --dev
 ```
 
 Detailed logs may be shown by running the node with the following environment variables set: `RUST_LOG=debug RUST_BACKTRACE=1 cargo run -- --dev`.
@@ -110,7 +124,7 @@ You'll need two terminal windows open.
 We'll start Alice's substrate node first on default TCP port 30333 with her chain database stored locally at `/tmp/alice`. The bootnode ID of her node is `QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR`, which is generated from the `--node-key` value that we specify below:
 
 ```bash
-cargo run -- \
+./target/release/noahs-ark \
   --base-path /tmp/alice \
   --chain=local \
   --alice \
@@ -122,7 +136,7 @@ cargo run -- \
 In the second terminal, we'll start Bob's substrate node on a different TCP port of 30334, and with his chain database stored locally at `/tmp/bob`. We'll specify a value for the `--bootnodes` option that will connect his node to Alice's bootnode ID on TCP port 30333:
 
 ```bash
-cargo run -- \
+./target/release/noahs-ark \
   --base-path /tmp/bob \
   --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR \
   --chain=local \
