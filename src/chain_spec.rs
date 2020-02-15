@@ -3,6 +3,7 @@ use runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
 	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY, Signature,
 	SessionConfig, opaque::SessionKeys, ValidatorSetConfig, DemocracyConfig,
+	AirDropConfig, VestingConfig,
 };
 use sp_consensus_aura::sr25519::{AuthorityId as AuraId};
 use grandpa_primitives::{AuthorityId as GrandpaId};
@@ -149,11 +150,10 @@ fn testnet_genesis(initial_authorities: Vec<(AccountId, GrandpaId, AuraId)>,
 			}).collect::<Vec<_>>(),
 		}),
 		indices: Some(IndicesConfig {
-			ids: endowed_accounts.clone(),
+			indices: vec![],
 		}),
 		balances: Some(BalancesConfig {
 			balances: endowed_accounts.iter().cloned().map(|k|(k, 1 << 60)).collect(),
-			vesting: vec![],
 		}),
 		sudo: Some(SudoConfig {
 			key: root_key,
@@ -165,6 +165,13 @@ fn testnet_genesis(initial_authorities: Vec<(AccountId, GrandpaId, AuraId)>,
 			authorities: vec![],
 		}),
 		democracy: Some(DemocracyConfig::default()),
+		air_drop: Some(AirDropConfig {
+			claims: vec![],
+			vesting: vec![],
+		}),
+		vesting: Some(VestingConfig {
+			vesting: vec![],
+		}),
 	}
 }
 
