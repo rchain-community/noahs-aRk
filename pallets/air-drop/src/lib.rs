@@ -334,22 +334,21 @@ mod tests {
 		type AvailableBlockRatio = AvailableBlockRatio;
 		type Version = ();
 		type ModuleToIndex = ();
+		type OnReapAccount = ();
+		type OnNewAccount = ();
+		type AccountData = balances::AccountData<u64>;
 	}
 
 	parameter_types! {
 		pub const ExistentialDeposit: u64 = 1;
-		pub const CreationFee: u64 = 0;
 	}
 
 	impl balances::Trait for Test {
 		type Balance = u64;
-		type OnReapAccount = System;
-		type OnNewAccount = ();
-		type TransferPayment = ();
 		type DustRemoval = ();
 		type Event = ();
 		type ExistentialDeposit = ExistentialDeposit;
-		type CreationFee = CreationFee;
+		type AccountStore = System;
 	}
 
 	impl vesting::Trait for Test {
@@ -550,15 +549,15 @@ mod tests {
 			);
 			assert_eq!(
 				<Module<Test>>::validate_unsigned(&Call::claim(0, EcdsaSignature([0; 65]))),
-				InvalidTransaction::Custom(ValidityError::InvalidEthereumSignature.into()).into(),
+				InvalidTransaction::Custom(0).into(),
 			);
 			assert_eq!(
 				<Module<Test>>::validate_unsigned(&Call::claim(1, sig(&bob(), &1u64.encode()))),
-				InvalidTransaction::Custom(ValidityError::SignerHasNoClaim.into()).into(),
+				InvalidTransaction::Custom(1).into(),
 			);
 			assert_eq!(
 				<Module<Test>>::validate_unsigned(&Call::claim(0, sig(&bob(), &1u64.encode()))),
-				InvalidTransaction::Custom(ValidityError::SignerHasNoClaim.into()).into(),
+				InvalidTransaction::Custom(1).into(),
 			);
 		});
 	}

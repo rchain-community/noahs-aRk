@@ -63,3 +63,11 @@ default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 package = 'frame-system'
 rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'
+
+[dev-dependencies]
+hex-literal = "0.2.1"
+libsecp256k1 = "0.3.2"
+tiny-keccak = "1.5.0"
+balances = {package = "pallet-balances", default-features = false, git = 'https://github.com/paritytech/substrate.git', rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'}
+vesting = {package = "pallet-vesting", default-features = false, git = 'https://github.com/paritytech/substrate.git', rev = '2e8080e2902fc477bbce36512a8f5bcdc4b49f17'}
+serde_json = "1.0.41"

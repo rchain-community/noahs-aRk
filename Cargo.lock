@@ -102,13 +102,19 @@ version = "0.1.0"
 dependencies = [
  "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "hex-literal 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libsecp256k1 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pallet-balances 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "pallet-vesting 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "rustc-hex 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde_json 1.0.48 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-core 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-io 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "tiny-keccak 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -731,6 +737,24 @@ dependencies = [
 name = "either"
 version = "1.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "enumflags2"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "enumflags2_derive 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "enumflags2_derive"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "proc-macro2 1.0.8 (registry+https://github.com/rust-lang/crates.io-index)",
+ "quote 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "syn 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "env_logger"
@@ -2735,6 +2759,20 @@ dependencies = [
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "sp-api 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+]
+
+[[package]]
+name = "pallet-vesting"
+version = "2.0.0"
+source = "git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17#2e8080e2902fc477bbce36512a8f5bcdc4b49f17"
+dependencies = [
+ "enumflags2 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "frame-support 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "frame-system 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
+ "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "sp-io 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-runtime 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
  "sp-std 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)",
 ]
@@ -5088,6 +5126,14 @@ dependencies = [
 
 [[package]]
 name = "tiny-keccak"
+version = "1.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "crunchy 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "tiny-keccak"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
@@ -5969,6 +6015,8 @@ dependencies = [
 "checksum doc-comment 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "923dea538cea0aa3025e8685b20d6ee21ef99c4f77e954a30febbaac5ec73a97"
 "checksum ed25519-dalek 1.0.0-pre.3 (registry+https://github.com/rust-lang/crates.io-index)" = "978710b352437433c97b2bff193f2fb1dfd58a093f863dd95e225a19baa599a2"
 "checksum either 1.5.3 (registry+https://github.com/rust-lang/crates.io-index)" = "bb1f6b1ce1c140482ea30ddd3335fc0024ac7ee112895426e0a629a6c20adfe3"
+"checksum enumflags2 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "33121c8782ba948ba332dab29311b026a8716dc65a1599e5b88f392d38496af8"
+"checksum enumflags2_derive 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "ecf634c5213044b8d54a46dd282cf5dd1f86bb5cb53e92c409cb4680a7fb9894"
 "checksum env_logger 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "aafcde04e90a5226a6443b7aabdb016ba2f8307c847d524724bd9b346dd1a2d3"
 "checksum env_logger 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "44533bbbb3bb3c1fa17d9f2e4e38bbbaf8396ba82193c4cb1b6445d711445d36"
 "checksum environmental 1.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "516aa8d7a71cb00a1c4146f0798549b93d083d4f189b3ced8f3de6b8f11ee6c4"
@@ -6152,6 +6200,7 @@ dependencies = [
 "checksum pallet-timestamp 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)" = "<none>"
 "checksum pallet-transaction-payment 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)" = "<none>"
 "checksum pallet-transaction-payment-rpc-runtime-api 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)" = "<none>"
+"checksum pallet-vesting 2.0.0 (git+https://github.com/paritytech/substrate.git?rev=2e8080e2902fc477bbce36512a8f5bcdc4b49f17)" = "<none>"
 "checksum parity-bytes 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "0c276d76c5333b8c2579e02d49a06733a55b8282d2d9b13e8d53b6406bd7e30a"
 "checksum parity-multiaddr 0.7.2 (registry+https://github.com/rust-lang/crates.io-index)" = "26df883298bc3f4e92528b4c5cc9f806b791955b136da3e5e939ed9de0fd958b"
 "checksum parity-multihash 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "7a1cd2ba02391b81367bec529fb209019d718684fdc8ad6a712c2b536e46f775"
@@ -6351,6 +6400,7 @@ dependencies = [
 "checksum threadpool 1.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e2f0c90a5f3459330ac8bc0d2f879c693bb7a2f59689c1083fc4ef83834da865"
 "checksum time 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)" = "db8dcfca086c1143c9270ac42a2bbd8a7ee477b78ac8e45b19abfb0cbede4b6f"
 "checksum tiny-bip39 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "c1c5676413eaeb1ea35300a0224416f57abc3bd251657e0fafc12c47ff98c060"
+"checksum tiny-keccak 1.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1d8a021c69bb74a44ccedb824a046447e2c84a01df9e5c20779750acb38e11b2"
 "checksum tiny-keccak 2.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "2953ca5148619bc99695c1274cb54c5275bbb913c6adad87e72eaf8db9787f69"
 "checksum tokio 0.1.22 (registry+https://github.com/rust-lang/crates.io-index)" = "5a09c0b5bb588872ab2f09afa13ee6e9dac11e10a0ec9e8e3ba39a5a5d530af6"
 "checksum tokio 0.2.11 (registry+https://github.com/rust-lang/crates.io-index)" = "8fdd17989496f49cdc57978c96f0c9fe5e4a58a8bddc6813c449a4624f6a030b"
