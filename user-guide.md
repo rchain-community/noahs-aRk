@@ -1,5 +1,58 @@
 # Noah's aRk User Guide
 
+## Using the Interface
+
+Currently the best inerface is **Polkadot-JS Apps**.
+
+* Hosted UI: https://polkadot.js.org/apps
+* Code on github: https://github.com/polkadot-js/apps
+* Docs at: https://polkadot.js.org/REPOS.html
+
+Initially, Apps will be connected to the Kusama network. You can change that on the `Settings` page, or by specifying it in the URL:
+* Public Testnet: https://polkadot.js.org/apps?rpc=wss://noahsark.bootnodes.net/node0
+* Node on your computer: https://polkadot.js.org/apps?rpc=ws://127.0.0.1:9944
+
+### Claiming aRk
+
+You don't start with any aRk tokens. You claim your aRk by providing a valid signature with the ethereum key to which aRk are allocated. (In the testnet is is rhoc holders).
+
+Start by creating a new account (keypair) on the `Accounts tab`. This is the account that your claimed aRk will be transferred into. Copy your address by clicking the identicon.
+
+Now navigate to the `Claims` tab. After selecting your account, it will ask you to sign a message of the following form. The public key associated with your account is hex encoded _without_ the 0x prefix.
+```
+Pay aRk tokens to account:<public key>
+```
+
+Detailed docs for the nearly identical process of claiming Kusama tokens:  https://guide.kusama.network/en/latest/start/dot-holders/
+
+Example Ethereum accounts and signatures are provided for the testnet profiles in [demo-keys.md](./demo-keys.md).
+
+### Vesting
+
+Tokens are vested when they are claimed. I'm open to suggestions about the vesting schedule (but it has to be linear unless you code it yourself). I think vesting is disabled in testnet.
+
+* https://substrate.dev/rustdocs/master/pallet_vesting/index.html
+* https://github.com/paritytech/substrate/blob/2e8080e2902fc477bbce36512a8f5bcdc4b49f17/frame/vesting/src/lib.rs
+
+### Making Proposals
+
+* Got to Democracy Tab (https://polkadot.js.org/apps/#/democracy) and click `Submit Preimage`
+* Select your proposal from the dropdowns
+* Remember the hash, and `Send Transaction`
+* Click `Submit Proposal`
+* Use the hash from before, and select how many aRk you're willing to stake
+* Click `Submit Proposal`
+
+### Seconding Proposals
+
+It's pretty straightforward on the Democracy tab. There is a button for it.
+
+### Voting
+
+Also on the democray tab.
+
+I'm not sure the strings describing the lockup periods will match ours. TBD.
+
 ## Building the Node
 
 Install Rust:
@@ -31,6 +84,14 @@ More details about running Substrate nodes are available in the Substrate docume
 
 * [Creating your first Substrate chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain/)
 * [Start a private network with Substrate](https://substrate.dev/docs/en/tutorials/start-a-private-network/)
+
+### Joining the Public Testnet
+
+A [chainspec file](https://substrate.dev/docs/en/development/deployment/chain-spec) is in this repository at `public-testnet-1.json`. To use this chainpec run
+
+```bash
+./target/release/noash-ark --chain=./public-testnet-1.json --name MyNodesName
+```
 
 ### Single Node Development Chain
 
@@ -81,66 +142,13 @@ In the second terminal, we'll start Bob's substrate node on a different TCP port
   --validator
 ```
 
-## Using the Interface
-
-Currently the best inerface is **Polkadot-JS Apps**.
-
-* Hosted UI: https://polkadot.js.org/apps
-* Code on github: https://github.com/polkadot-js/apps
-* Docs at: https://polkadot.js.org/REPOS.html
-
-Initially, Apps will be connected to the Kusama network. You can change that to your local node on the `Settings` page, or by specifying it in the URL https://polkadot.js.org/apps?rpc=ws://127.0.0.1:9944
-
-Not sure how well this works with our chain yet.
-
-### Claiming aRk
-
-You don't start with any aRk tokens. You claim your aRk by providing a valid signature with the ethereum key that owned them.
-
-Start by creating a new account (keypair) on the `Accounts tab`. This is the account that your claimed aRk will be transferred into. Copy your address by clicking the identicon.
-
-Now navigate to the `Claims` tab. After selectig your account, it will ask you to sign a message of the following form. The public key associated with your account is hex encoded _without_ the 0x prefix.
-```
-Pay aRk tokens to account:<public key>
-```
-
-Detailed docs for the nearly identical process of claiming Kusama tokens:  https://guide.kusama.network/en/latest/start/dot-holders/
-
-Example Ethereum accounts and signatures are provided for the testnet profiles in [demo-keys.md](./demo-keys.md).
-
-### Vesting
-
-Tokens are vested when they are claimed. I'm open to suggestions about the vesting schedule (but it has to be linear unless you code it yourself).
-
-* https://substrate.dev/rustdocs/master/pallet_vesting/index.html
-* https://github.com/paritytech/substrate/blob/2e8080e2902fc477bbce36512a8f5bcdc4b49f17/frame/vesting/src/lib.rs
-
-### Making Proposals
-
-* Got to Democracy Tab (https://polkadot.js.org/apps/#/democracy) and click `Submit Preimage`
-* Select your proposal from the dropdowns
-* Remember the hash, and `Send Transaction`
-* Click `Submit Proposal`
-* Use the hash from before, and select how many aRk you're willing to stake
-* Click `Submit Proposal`
-
-### Seconding Proposals
-
-It's pretty straightforward on the Democracy tab. There is a button for it.
-
-### Voting
-
-Also on the democray tab.
-
-I'm not sure the strings describing the lockup periods will match ours. TBD.
-
-## Valaidating
+## Validating
 
 To be a validator you must be either:
 
-* Specify in the genesis config ([example](https://github.com/rchain-community/noahs-aRk/blob/master/src/chain_spec.rs#L145))
+* Specified in the genesis config ([example](https://github.com/rchain-community/noahs-aRk/blob/master/src/chain_spec.rs#L145))
 -OR-
-* Add via a root call to `vallidator-set::add_validator`
+* Added via governance to `vallidator-set::add_validator`
 
 ### From Genesis
 
