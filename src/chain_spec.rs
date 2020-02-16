@@ -3,12 +3,14 @@ use runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
 	SudoConfig, IndicesConfig, SystemConfig, WASM_BINARY, Signature,
 	SessionConfig, opaque::SessionKeys, ValidatorSetConfig, DemocracyConfig,
-	AirDropConfig, VestingConfig,
+	ClaimsConfig, VestingConfig,
 };
 use sp_consensus_aura::sr25519::{AuthorityId as AuraId};
 use grandpa_primitives::{AuthorityId as GrandpaId};
 use sc_service;
 use sp_runtime::traits::{Verify, IdentifyAccount};
+use hex_literal::hex;
+use air_drop::EthereumAddress;
 
 // Note this is the URL for the telemetry server
 //const STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
@@ -136,6 +138,11 @@ fn testnet_genesis(initial_authorities: Vec<(AccountId, GrandpaId, AuraId)>,
 	root_key: AccountId,
 	endowed_accounts: Vec<AccountId>,
 	_enable_println: bool) -> GenesisConfig {
+
+	println!("In testnet_genesis");
+	let alice_addr = EthereumAddress(hex!("923EcA99f32358Bb6044A932c7D1318e54EAd5E1"));
+	println!("Alice address: {:?}", alice_addr);
+
 	GenesisConfig {
 		system: Some(SystemConfig {
 			code: WASM_BINARY.to_vec(),
@@ -165,8 +172,13 @@ fn testnet_genesis(initial_authorities: Vec<(AccountId, GrandpaId, AuraId)>,
 			authorities: vec![],
 		}),
 		democracy: Some(DemocracyConfig::default()),
-		air_drop: Some(AirDropConfig {
-			claims: vec![],
+		air_drop: Some(ClaimsConfig {
+			claims: vec![
+				// // Alice's ethereum address (stripped the 0x)
+				// (EthereumAddress(hex!("923EcA99f32358Bb6044A932c7D1318e54EAd5E1")), 1_000_000),
+				// // Bob's ethereum address (stripped the 0x)
+				// (EthereumAddress(hex!("Bd2685C5030C3A65081085Fd786A295C86AEC0B9")), 1_000_000),
+			],
 			vesting: vec![],
 		}),
 		vesting: Some(VestingConfig {

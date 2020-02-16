@@ -13,9 +13,11 @@ dependencies = [
 name = "Noahs-aRk"
 version = "0.1.0"
 dependencies = [
+ "air-drop 0.1.0",
  "ctrlc 3.1.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "hex-literal 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "noahs-ark-runtime 0.1.0",
  "parity-scale-codec 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",

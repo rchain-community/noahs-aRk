@@ -50,7 +50,7 @@ pub trait Trait: system::Trait {
 ///
 /// This gets serialized to the 0x-prefixed hex representation.
 #[derive(Clone, Copy, PartialEq, Eq, Encode, Decode, Default, RuntimeDebug)]
-pub struct EthereumAddress([u8; 20]);
+pub struct EthereumAddress(pub [u8; 20]);
 
 #[cfg(feature = "std")]
 impl Serialize for EthereumAddress {

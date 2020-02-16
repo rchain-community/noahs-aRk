@@ -308,7 +308,7 @@ construct_runtime!(
 		ValidatorSet: validator_set::{Module, Call, Storage, Event<T>, Config<T>},
 		Democracy: democracy::{Module, Call, Storage, Config, Event<T>},
 		Vesting: vesting::{Module, Call, Storage, Event<T>, Config<T>},
-		AirDrop: air_drop::{Module, Call, Storage, Event<T>, Config<T>, ValidateUnsigned},
+		Claims: air_drop::{Module, Call, Storage, Event<T>, Config<T>, ValidateUnsigned},
 	}
 );
 
