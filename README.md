@@ -7,7 +7,7 @@
 * 💩 A shitcoin of our own
 * 👊 A censure of Greg Meredith's leadership
 
-Here's a crappy start at a [**User's Guide**](./user-guide.md).
+Here's a Start at a [**📖 User's Guide 📖**](./user-guide.md).
 
 ## Motivation
 
