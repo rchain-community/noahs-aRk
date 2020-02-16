@@ -97,12 +97,16 @@ Not sure how well this works with our chain yet.
 
 You don't start with any aRk tokens. You claim your aRk by providing a valid signature with the ethereum key that owned them.
 
-Start by creating an account (a new keypair) on the `Accounts tab`. Copy your address by clicking the identicon.
+Start by creating a new account (keypair) on the `Accounts tab`. This is the account that your claimed aRk wil lbe transferred into. Copy your address by clicking the identicon.
 
-Now make your claim by signing TODO but see here:
-* https://guide.kusama.network/en/latest/start/dot-holders/
-* Our [unique prefix](https://github.com/rchain-community/noahs-aRk/blob/3ba40dcd919814b80a272b763c3fdb6c157d2635/runtime/src/lib.rs#L277) is `Pay aRk tokens to account:`
-* Code that [generates the signable message](https://github.com/rchain-community/noahs-aRk/blob/3ba40dcd919814b80a272b763c3fdb6c157d2635/pallets/air-drop/src/lib.rs#L228-L241)
+Now navigate to the `Claims` tab. After selectig your account, it will ask you to sign a message of the following form. The public key associated withis hex encoded _without_ the 0x prefix.
+```
+Pay aRk tokens to account:<public key>
+```
+
+Detailed docs for the nearly identical process of claiming Kusama tokens:  https://guide.kusama.network/en/latest/start/dot-holders/
+
+Example Ethereum accounts and signatures are provided for the testnet profiles in [demo-keys.md](./demo-keys.md).
 
 ### Vesting
 
