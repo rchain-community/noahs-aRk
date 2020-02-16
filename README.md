@@ -1,4 +1,7 @@
 # Noah's aRk 🚢
+![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Frchain-community%2Fnoahs-ark%2Fbadge%3Fref%3Dmaster&style=flat)
+![Lines of Code](https://tokei.rs/b1/github/rchain-community/noahs-ark)
+
 
 * 🕊️ Hope for the Rchain Community
 * 🪂 An airdrop to rhoc holders
