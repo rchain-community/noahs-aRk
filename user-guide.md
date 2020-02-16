@@ -27,9 +27,9 @@ Always take advantage of the help page.
 ./target/release/noahs-ark --help
 ```
 
-More detail about running Substrate nodes is available in the Substrate documentation:
+More details about running Substrate nodes are available in the Substrate documentation:
 
-* [Creating you first Substrate chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain/)
+* [Creating your first Substrate chain](https://substrate.dev/docs/en/tutorials/creating-your-first-substrate-chain/)
 * [Start a private network with Substrate](https://substrate.dev/docs/en/tutorials/start-a-private-network/)
 
 ### Single Node Development Chain
@@ -89,7 +89,7 @@ Currently the best inerface is **Polkadot-JS Apps**.
 * Code on github: https://github.com/polkadot-js/apps
 * Docs at: https://polkadot.js.org/REPOS.html
 
-Initially Apps will be connected to the Kusama network. You can change that to your local node on the `Settings` page, or by specifying it in the URL https://polkadot.js.org/apps?rpc=ws://127.0.0.1:9944
+Initially, Apps will be connected to the Kusama network. You can change that to your local node on the `Settings` page, or by specifying it in the URL https://polkadot.js.org/apps?rpc=ws://127.0.0.1:9944
 
 Not sure how well this works with our chain yet.
 
@@ -97,9 +97,9 @@ Not sure how well this works with our chain yet.
 
 You don't start with any aRk tokens. You claim your aRk by providing a valid signature with the ethereum key that owned them.
 
-Start by creating a new account (keypair) on the `Accounts tab`. This is the account that your claimed aRk wil lbe transferred into. Copy your address by clicking the identicon.
+Start by creating a new account (keypair) on the `Accounts tab`. This is the account that your claimed aRk will be transferred into. Copy your address by clicking the identicon.
 
-Now navigate to the `Claims` tab. After selectig your account, it will ask you to sign a message of the following form. The public key associated withis hex encoded _without_ the 0x prefix.
+Now navigate to the `Claims` tab. After selectig your account, it will ask you to sign a message of the following form. The public key associated with your account is hex encoded _without_ the 0x prefix.
 ```
 Pay aRk tokens to account:<public key>
 ```
@@ -110,7 +110,7 @@ Example Ethereum accounts and signatures are provided for the testnet profiles i
 
 ### Vesting
 
-Tokens are vested when they are claimed. I'm open to suggestions about the vesting schedule (but it has to be linear unless you code it yourself)
+Tokens are vested when they are claimed. I'm open to suggestions about the vesting schedule (but it has to be linear unless you code it yourself).
 
 * https://substrate.dev/rustdocs/master/pallet_vesting/index.html
 * https://github.com/paritytech/substrate/blob/2e8080e2902fc477bbce36512a8f5bcdc4b49f17/frame/vesting/src/lib.rs
@@ -119,7 +119,7 @@ Tokens are vested when they are claimed. I'm open to suggestions about the vesti
 
 * Got to Democracy Tab (https://polkadot.js.org/apps/#/democracy) and click `Submit Preimage`
 * Select your proposal from the dropdowns
-* Remener the hash, and `Send Transaction`
+* Remember the hash, and `Send Transaction`
 * Click `Submit Proposal`
 * Use the hash from before, and select how many aRk you're willing to stake
 * Click `Submit Proposal`
@@ -132,19 +132,19 @@ It's pretty straightforward on the Democracy tab. There is a button for it.
 
 Also on the democray tab.
 
-I'm not sure the strings describing the lockup periods wil lmatch ours. TBD.
+I'm not sure the strings describing the lockup periods will match ours. TBD.
 
 ## Valaidating
 
-To be a validator you must be either
+To be a validator you must be either:
 
-* Specified in the genesis config ([example](https://github.com/rchain-community/noahs-aRk/blob/master/src/chain_spec.rs#L145))
+* Specify in the genesis config ([example](https://github.com/rchain-community/noahs-aRk/blob/master/src/chain_spec.rs#L145))
 -OR-
-* Added via a root call to `vallidator-set::add_validator`
+* Add via a root call to `vallidator-set::add_validator`
 
 ### From Genesis
 
-Start your none with the correct chainspec first. Then use Apps `Toolbox` tab -> `RPC Calls` -> `author` -> `insertKeys`. A tutorial for this technique is available https://substrate.dev/docs/en/tutorials/start-a-private-network/customchain#add-keys-to-keystore
+Start your node with the correct chainspec first. Then use Apps `Toolbox` tab -> `RPC Calls` -> `author` -> `insertKeys`. A tutorial for this technique is available https://substrate.dev/docs/en/tutorials/start-a-private-network/customchain#add-keys-to-keystore.
 
 ### After Genesis
 
