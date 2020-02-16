@@ -11,14 +11,14 @@ pub use sc_cli::{VersionInfo, error};
 
 fn main() -> Result<(), error::Error> {
 	let version = VersionInfo {
-		name: "Substrate Permissioning Sample Node",
+		name: "Noah's aRk node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
-		executable_name: "permissioning-sample",
-		author: "gautamdhameja",
-		description: "Substrate Permissioning Sample",
+		executable_name: "noahs-ark",
+		author: "Anonymous",
+		description: "Noah's aRk",
 		support_url: "support.anonymous.an",
-		copyright_start_year: 2017,
+		copyright_start_year: 2020,
 	};
 
 	command::run(version)
